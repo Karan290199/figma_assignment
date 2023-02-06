@@ -1,0 +1,111 @@
+.Resource_Request_User_Tab {
+    width: 600px;
+    height: 40px;
+    position: absolute;
+    left: 398px;
+    right: 398px;
+    top: 88px;
+    bottom: 649px;
+    background: #D7DFE9;
+    display: flex;
+}
+
+.Resource_div {
+    width: 200px;
+    height: 40px;
+    background: #0B69FF;
+    border: 1px solid #D7DFE9;
+    cursor: pointer;
+}
+
+.Resource_text {
+    width: 64px;
+    height: 24px;
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 78px;
+    right: 58px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    font-style: normal;
+    font-family: 'HK Grotesk';
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.Request_div {
+    width: 200px;
+    height: 40px;
+    left: 200px;
+    background: rgba(215, 223, 233, 0.24);
+    border: 1px solid #D7DFE9;
+    cursor: pointer;
+}
+
+.Request_text {
+    width: 58px;
+    height: 24px;
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 271px;
+    right: 71px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    font-style: normal;
+    font-family: 'HK Grotesk';
+    color: #171F46;
+    text-align: center;
+}
+
+.User_div {
+    width: 200px;
+    height: 40px;
+    left: 400px;
+    background: rgba(215, 223, 233, 0.24);
+    border: 1px solid #D7DFE9;
+    cursor: pointer;
+}
+.User_text {
+    width: 176px;
+    height: 24px;
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 412px;
+    right: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    font-style: normal;
+    font-family: 'HK Grotesk';
+    color: #171F46;
+    text-align: center;
+}
+
+.searchBar {
+    box-sizing: border-box;
+    position: absolute;
+    background: white;
+    border-radius: 3px;
+    border: 1px solid #D7DFE9;
+    left: 141px;
+    right: 610px;
+    top: 142px;
+    bottom: 596px;
+    width: 648px;
+    height: 40px;
+    display: flex;
+}
+
+.inputSearch {
+    position: absolute;
+    left: 46px;
+    width: 600px;
+    height: 38px;
+    border: none;
+    padding: 3px;
+}

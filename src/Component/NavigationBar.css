@@ -1,0 +1,51 @@
+.navbar {
+  height: 72px;
+  position: sticky;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+}
+.companyLogo {
+  position: absolute;
+  width: 82px;
+  height: 40px;
+  top: 16px;
+  left: 45px;
+  bottom: 16px;
+}
+
+.AddItemButton {
+  display: flex;
+  align-items: center;
+  padding: 8px 20px;
+  gap: 10px;
+  position: absolute;
+  top: 16px;
+  bottom: 16px;
+  right: 106px;
+  background: #2dca73;
+  border: none;
+  border-radius: 4px;
+  color: white;
+}
+.avatarDiv {
+  width: 40px;
+  height: 60px;
+  position: absolute;
+  bottom: 4px;
+  top: 16px;
+  right: 38px;
+}
+.userProfile {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.horizontaldiv {
+  width: 1366px;
+  height: 1px;
+  top: 71px;
+  background: #d7dfe9;
+  position: absolute;
+}
