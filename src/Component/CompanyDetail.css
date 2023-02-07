@@ -1,0 +1,108 @@
+.cardDiv {
+    width: 300px;
+    height: 150px;
+    border-radius: 4px;
+    border: 2px solid #D7DFE9;
+    background: white;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column
+}
+.cardHeader {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    height: fit-content;
+    background: white   
+}
+.cardImg {
+    width: 44px;
+    height: 44px;
+    background: white;
+    border: 2px solid #D7DFE9;
+    border-radius: 4px;
+    position: relative;
+    left: 10px;
+    top: 10px
+}
+
+.cardTitle {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    padding: 5px
+}
+
+.cardName {
+    width: auto;
+    height: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    font-family: 'HK Grotesk', sans-serif;
+    font-style: normal;
+    display: flex;
+    background: white;
+    position: relative;
+    left: 10px;
+    top: 10px;
+    color: #171F46
+}
+
+.cardCategory {
+    width: 82px;
+    height: 16px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    font-family: 'HK Grotesk', sans-serif;
+    font-style: normal;
+    display: flex;
+    background: white;
+    position: relative;
+    left: 10px;
+    top: 10px;
+    margin: 5px;
+    color: #7E858E
+}
+
+.cardBody {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    width: fit-content;
+    height: fit-content;
+}
+
+.cardLink {
+    width: fit-content;
+    height: 24px;
+    position: relative;
+    left: 10px;
+    top: 10px;
+    font-family: 'HK Grotesk', sans-serif;
+    font-style: normal;
+    display: flex;
+    background: white;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #0B69FF
+}
+
+.cardDescription {
+    width: 200px;
+    height: 24px;
+    position: relative;
+    left: 10px;
+    top: 10px;
+    font-family: 'HK Grotesk', sans-serif;
+    font-style: normal;
+    display: flex;
+    background: white;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #7E858E
+}
