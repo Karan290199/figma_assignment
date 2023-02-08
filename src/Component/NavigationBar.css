@@ -29,6 +29,7 @@
   border: none;
   border-radius: 4px;
   color: white;
+  cursor: pointer;
 }
 .avatarDiv {
   width: 40px;

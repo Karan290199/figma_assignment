@@ -1,19 +1,27 @@
 import React from "react";
 import { Container, Navbar, Button, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
 import "./NavigationBar.css";
-const NavigationBar = () => {
+const NavigationBar = ({ hide }) => {
   return (
     <Navbar bg="light" expand="lg" className="navbar">
       <Container>
         <Navbar.Brand>
-          <img
-            src="https://nxtwave-website-media-files.s3.ap-south-1.amazonaws.com/ccbp-website/Nxtwave_Colored.svg"
-            alt="Next Wave img"
-            className="companyLogo"
-          />
+          <Link to = "/">
+            <img
+              src="https://nxtwave-website-media-files.s3.ap-south-1.amazonaws.com/ccbp-website/Nxtwave_Colored.svg"
+              alt="Next Wave img"
+              className="companyLogo"
+            />
+          </Link>
         </Navbar.Brand>
         <Nav>
-          <Button className="AddItemButton">ADD ITEM</Button>
+          {hide ? null : (
+            <Link to="/addItem">
+              <Button className="AddItemButton">ADD ITEM</Button>
+            </Link>
+          )}
         </Nav>
         <Nav>
           <div className="avatarDiv">

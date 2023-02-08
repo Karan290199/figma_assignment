@@ -1,39 +1,49 @@
 import React, { useEffect, useState } from "react";
 import TogglerButton from "../Component/TogglerButton";
-import { useCompanyContext } from "../Hooks/useCompanyContext";
 import CompanyDetail from "../Component/CompanyDetail";
 import "react-toastify/dist/ReactToastify.css";
 import "./HomePage.css";
+import axios from "axios";
+import NavigationBar from "../Component/NavigationBar";
 
 const HomePage = () => {
-  const [selected, setSelected] = useState(null);
-  const { companies, dispatch } = useCompanyContext();
-  const [filterCompanies, setCompanies] = useState();
+  const [selected, setSelected] = useState("Resources");
+  const [APIData, setAPIData] = useState([]);
+  const [companies, setCompanies] = useState(null);
+  const [filterResults, setFilterResults] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
-    const fetchCompanyDetails = async () => {
-      const response = await fetch(
-        "https://media-content.ccbp.in/website/react-assignment/resources.json"
-      );
-      let json = await response.json();
-      if (response.ok) {
-        dispatch({ type: "SET_COMPANY", payload: json });
-      }
-    };
-    fetchCompanyDetails();
-  }, [dispatch]);
+    axios
+      .get(
+        `https://media-content.ccbp.in/website/react-assignment/resources.json`
+      )
+      .then((response) => {
+        setAPIData(response.data);
+      });
+  }, []);
 
   const handleClick = (name) => {
     setSelected(name);
-    if (name === "Requests") {
-      setCompanies(companies.filter((company) => company.tag === "request"));
-    } else if (name === "Users") {
-      setCompanies(companies.filter((company) => company.tag === "user"));
-    } else setCompanies(companies);
+    if (name !== "Resources") {
+      name = name.substring(0, name.length - 1).toLowerCase();
+      setCompanies(APIData.filter((company) => company.tag === name));
+    } else setCompanies(APIData);
+  };
+
+  const searchItems = (searchValue) => {
+    setSearchInput(searchValue);
+    if (searchInput !== "") {
+      const filterData = companies.filter((company) => {
+        return Object.values(company).join("").includes(searchInput);
+      });
+      setFilterResults(filterData);
+    } else setFilterResults(APIData);
   };
 
   return (
     <div>
+      <NavigationBar hide={false}/>
       <div className="Container">
         <TogglerButton
           name="Resources"
@@ -53,16 +63,29 @@ const HomePage = () => {
           src="https://www.freeiconspng.com/thumbs/search-icon-png/search-icon-png-1.png"
           className="searchIcon"
         />
-        <input type="search" placeholder="Search" className="inputSearch"/>
+        <input
+          type="search"
+          className="inputSearch"
+          onChange={(e) => searchItems(e.target.value)}
+          placeholder="Search"
+        />
       </div>
       <div className="companyContainer">
-        {filterCompanies &&
-          filterCompanies.map((company) => (
-            <CompanyDetail id={company.id} company={company} />
-          ))}
+        {searchInput.length > 1
+          ? filterResults.map((company) => {
+              return <CompanyDetail key={company.id} company={company} />;
+            })
+          : companies === null
+          ? APIData.map((company) => {
+              return <CompanyDetail key={company.id} company={company} />;
+            })
+          : companies.map((company) => {
+              return <CompanyDetail key={company.id} company={company} />;
+            })}
       </div>
     </div>
   );
 };
 
+export const globalId = 31;
 export default HomePage;

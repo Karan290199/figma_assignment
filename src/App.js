@@ -1,11 +1,17 @@
-import './App.css';
-import NavigationBar from './Component/NavigationBar';
-import HomePage from './Pages/HomePage';
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./Pages/HomePage";
+import AddItem from "./Pages/AddItem";
+
 function App() {
   return (
     <div className="App">
-      <NavigationBar/>
-      <HomePage/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage/>}/>
+          <Route path='/addItem' element = {<AddItem/>}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
