@@ -1,95 +1,140 @@
 .Container {
-    width: 600px;
-    height: 40px;
-    position: absolute;
-    display: flex;
-    background: white;
-    left: 398px;
-    right: 398px;
-    top: 88px;
-    bottom: 649px;
+  width: 600px;
+  height: 40px;
+  position: absolute;
+  display: flex;
+  background: white;
+  left: 398px;
+  right: 398px;
+  top: 88px;
+  bottom: 649px;
 }
 
 .searchBar {
-    box-sizing: border-box;
-    position: absolute;
-    background: white;
-    border-radius: 3px;
-    border: 1px solid #D7DFE9;
-    width: 648px;
-    height: 40px;
-    display: flex;
-    left: 141px;
-    right: 610px;
-    top: 142px;
-    bottom: 596px;
+  box-sizing: border-box;
+  position: absolute;
+  background: white;
+  border-radius: 3px;
+  border: 1px solid #d7dfe9;
+  width: 648px;
+  height: 40px;
+  display: flex;
+  left: 141px;
+  right: 610px;
+  top: 142px;
+  bottom: 596px;
 }
 
 .searchIcon {
-    background: white;
-    position: relative;
-    width: 40px;
-    height: 38px;
+  background: white;
+  position: relative;
+  width: 40px;
+  height: 38px;
 }
 
 .inputSearch {
-    background: white;
+  background: white;
+  height: 38px;
+  border: none;
+  width: calc(648px - 40px);
+}
+
+.paginationContainer {
+    display: flex;
+    position: absolute;
+    left: 450px;
+    top: 400px;
+}
+
+.paginationButton {
+    background-color: blueviolet;
+    color: white;
+    width: auto;
     height: 38px;
-    border: none;
-    width: calc(648px - 40px);
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #D7DFE9;
+    margin: 3px;
+}
+
+.icon {
+    color: #171F46;
+    font-size: 12px;
+    background: blueviolet;
 }
 
 .companyContainer {
-    position: absolute;
-    top: 200px;
-    left: 141px;
-    right: 141px;
+  position: absolute;
+  top: 200px;
+  left: 141px;
+  right: 141px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: auto;
+  height: auto;
+}
+
+.disabledClass {
+  background: #F5F5F5F5;
+}
+
+@media only screen and (max-width: 600px) {
+  .Container {
+    width: 300px;
+    height: 20px;
+    position: relative;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    background: white;
+    left: 4px;
+    top: 10px;
+  }
+  .searchBar {
+    box-sizing: border-box;
+    position: relative;
+    background: white;
+    border-radius: 3px;
+    border: 1px solid #d7dfe9;
+    width: max-content;
+    height: 40px;
+    display: flex;
+    left: 2px;
+    top: 25px;
+  }
+  .searchIcon {
+    background: white;
+    position: absolute;
+    width: 40px;
+    height: 38px;
+    left: auto;
+  }
+
+  .inputSearch {
+    background: white;
+    height: 38px;
+    border: none;
+    width: max-content;
+    position: absolute;
+    left: 35px;
+  }
+  .companyContainer {
+    display: flex;
+    position: relative;
+    top: 25px;
+    left: 0px;
+    bottom: 3px;
     width: auto;
     height: auto;
-
-}
-
-@media only screen and (max-width: 600px){
-    .Container {
-        width: 400px;
-        height: 40px;
-        position: relative;
+    overscroll-behavior: auto; 
+  }
+  .paginationContainer {
         display: flex;
-        background: white;
-        left: 4px;
-        top: 10px;
-    }
-    .searchBar {
-        box-sizing: border-box;
+        height: 38px;
         position: relative;
-        background: white;
-        border-radius: 3px;
-        border: 1px solid #D7DFE9;
-        width: max-content;
-        height: 40px;
-        display: flex;
-        left: 2px;
+        left: 100px;
         top: 20px;
     }
-    .searchIcon {
-        background: white;
-        position: absolute;
-        width: 40px;
-        height: 38px;
-        left: auto;
-    }
-    
-    .inputSearch {
-        background: white;
-        height: 38px;
-        border: none;
-        width: max-content;
-        position: absolute;
-        left: 35px;
-    }
 }
-
 

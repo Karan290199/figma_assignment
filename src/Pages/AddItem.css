@@ -178,3 +178,6 @@
         height: 40px;
     }
 }
+.Error {
+    border: 1px solid red;
+}

@@ -22,3 +22,10 @@
     color: #171F46;
     background: rgba(215, 223, 233, 0.24);
 }
+
+@media only screen and (max-width: 600px){
+    .buttonContainer {
+        width: 100px;
+        height: 25px;
+    }
+}

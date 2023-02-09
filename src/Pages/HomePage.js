@@ -6,10 +6,15 @@ import "./HomePage.css";
 import axios from "axios";
 import NavigationBar from "../Component/NavigationBar";
 
+const PER_PAGE = 6;
+
 const HomePage = () => {
+  const [currentPage, setCurrentPage] = useState(0);
   const [selected, setSelected] = useState("Resources");
-  const [APIData, setAPIData] = useState([]);
-  const [companies, setCompanies] = useState(null);
+  const [Resources, setResources] = useState([]);
+  const [Requests, setRequests] = useState([]);
+  const [Users, setUsers] = useState([]);
+  const [companies, setCompanies] = useState([]);
   const [filterResults, setFilterResults] = useState([]);
   const [searchInput, setSearchInput] = useState("");
 
@@ -19,16 +24,24 @@ const HomePage = () => {
         `https://media-content.ccbp.in/website/react-assignment/resources.json`
       )
       .then((response) => {
-        setAPIData(response.data);
+        const responseData = response.data;
+        setResources(responseData);
+        setCompanies(responseData);
+        const requestData = responseData.filter(
+          (request) => request.tag === "request"
+        );
+        setRequests(requestData);
+        const userData = responseData.filter((user) => user.tag === "user");
+        setUsers(userData);
       });
   }, []);
 
   const handleClick = (name) => {
     setSelected(name);
-    if (name !== "Resources") {
-      name = name.substring(0, name.length - 1).toLowerCase();
-      setCompanies(APIData.filter((company) => company.tag === name));
-    } else setCompanies(APIData);
+    console.log(name);
+    if (name === "Resources") setCompanies(Resources);
+    else if (name === "Requests") setCompanies(Requests);
+    else if (name === "Users") setCompanies(Users);
   };
 
   const searchItems = (searchValue) => {
@@ -38,12 +51,19 @@ const HomePage = () => {
         return Object.values(company).join("").includes(searchInput);
       });
       setFilterResults(filterData);
-    } else setFilterResults(APIData);
+    } else setFilterResults(companies);
   };
+
+  const handlePageClick = (selectedPage) => {
+    setCurrentPage(selectedPage);
+  };
+
+  const offset = currentPage * PER_PAGE;
+  const pageCount = Math.ceil(companies.length / PER_PAGE);
 
   return (
     <div>
-      <NavigationBar hide={false}/>
+      <NavigationBar hide={false} />
       <div className="Container">
         <TogglerButton
           name="Resources"
@@ -72,20 +92,35 @@ const HomePage = () => {
       </div>
       <div className="companyContainer">
         {searchInput.length > 1
-          ? filterResults.map((company) => {
-              return <CompanyDetail key={company.id} company={company} />;
-            })
-          : companies === null
-          ? APIData.map((company) => {
-              return <CompanyDetail key={company.id} company={company} />;
-            })
-          : companies.map((company) => {
-              return <CompanyDetail key={company.id} company={company} />;
-            })}
+          ? filterResults
+              .slice(offset, offset + PER_PAGE)
+              .map((company) => (
+                <CompanyDetail key={company.id} company={company} />
+              ))
+          : companies
+              .slice(offset, offset + PER_PAGE)
+              .map((company) => (
+                <CompanyDetail key={company.id} company={company} />
+              ))}
+        <div className="paginationContainer">
+          <button
+            className={`paginationButton ${currentPage === 0 ? "disabledClass": ""}`}
+            disabled={currentPage === 0 ? true: false}
+            onClick={() => handlePageClick(currentPage - 1)}
+          >
+            <i className={`fa fa-chevron-left icon ${currentPage === 0 ? "disabledClass": ""}`} />
+          </button>
+          <button
+            className={`paginationButton ${currentPage === pageCount - 1 ? "disabledClass": ""}`}
+            disabled={currentPage === pageCount - 1 ? true: false}
+            onClick={() => handlePageClick(currentPage + 1)}
+          >
+            <i className={`fa fa-chevron-right icon ${currentPage === pageCount - 1 ? "disabledClass": ""}`} />
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-export const globalId = 31;
 export default HomePage;

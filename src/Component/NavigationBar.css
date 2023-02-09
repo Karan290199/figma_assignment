@@ -1,7 +1,7 @@
 .navbar {
   height: 72px;
   position: sticky;
-  width: 100%;
+  width: auto;
   display: flex;
   flex-direction: row;
   background: white;
